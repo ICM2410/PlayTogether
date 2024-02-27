@@ -26,4 +26,7 @@
     <string name="fieldNameHint">Nombre de la cancha</string>
     <string name="fieldLocationHint">Ubicación de la cancha</string>
     <string name="addFieldButton">Agregar cancha</string>
+    <string name="newTeam">Crear Equipo</string>
+    <string name="teamsTitle">Equipos</string>
+    <string name="eventsTitle">Eventos</string>
 </resources>

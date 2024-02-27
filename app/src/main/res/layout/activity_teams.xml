@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".EventsActivity">
+    tools:context=".TeamsActivity">
 
     <ListView
-        android:id="@+id/eventsList"
+        android:id="@+id/teamsList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -23,7 +23,7 @@
         android:id="@+id/newEvent"
         android:layout_width="200dp"
         android:layout_height="48dp"
-        android:text="@string/newEvent"
+        android:text="@string/newTeam"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -32,10 +32,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="@string/eventsTitle"
+        android:text="@string/teamsTitle"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
