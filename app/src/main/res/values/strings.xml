@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">PlayTogether</string>
+    <string name="emailHint">Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="forgotPasswordText">¿Has olvidado tu contraseña?</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="registerAdvice">¿No te has registrado?</string>
+    <string name="registerButton">Registrate</string>
+    <string name="searchButton">Buscar</string>
+    <string name="sportFilter">Deporte</string>
+    <string name="fieldFilter">Instalación</string>
+    <string name="mapAlt">Map view</string>
+    <string name="goToEvents">Eventos</string>
+    <string name="goToFields">Canchas</string>
+    <string name="goToTeams">Equipos</string>
+    <string name="newEvent">Crear evento</string>
+    <string name="newEventTitle">Crear Nuevo Evento</string>
+    <string name="dateSelect">Fecha</string>
+    <string name="timeSelect">Hora</string>
+    <string name="fieldName">Nombre de la cancha</string>
+    <string name="fieldImageAlt">Field Image</string>
+    <string name="fieldLocation">Ubicación de la cancha</string>
+    <string name="newField">Agregar Cancha</string>
+    <string name="bookField">Reservar Cancha</string>
+    <string name="fieldPhotoAdd">Agregar foto de la cancha</string>
+    <string name="fieldNameHint">Nombre de la cancha</string>
+    <string name="fieldLocationHint">Ubicación de la cancha</string>
+    <string name="addFieldButton">Agregar cancha</string>
+</resources>
