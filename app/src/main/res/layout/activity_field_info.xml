@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fieldImage" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/fieldLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -49,10 +49,10 @@
         android:rating="4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/fieldLocation" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/bookField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="200dp"
@@ -63,12 +63,12 @@
         app:layout_constraintTop_toBottomOf="@+id/fieldRating" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/addField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/newField"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/bookField" />
 </androidx.constraintlayout.widget.ConstraintLayout>

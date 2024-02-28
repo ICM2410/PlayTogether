@@ -6,7 +6,7 @@
     <string name="login">Iniciar Sesión</string>
     <string name="registerAdvice">¿No te has registrado?</string>
     <string name="registerButton">Registrate</string>
-    <string name="searchButton">Buscar</string>
+    <string name="profileButton">Ver Perfil</string>
     <string name="sportFilter">Deporte</string>
     <string name="fieldFilter">Instalación</string>
     <string name="mapAlt">Map view</string>
@@ -52,4 +52,14 @@
     <string name="usernameHint">Nombre de usuario</string>
     <string name="passwordConfirmHint">Confirma tu contraseña</string>
     <string name="accountAlready">¿Ya tienes una cuenta?</string>
+    <string name="eventNameHint">Nombre del evento</string>
+    <string name="newEventButton">Crear evento</string>
+
+    <string-array name="sports">
+        <item>Futbol</item>
+        <item>Basquetbol</item>
+        <item>Ultimate</item>
+        <item>Tenis</item>
+    </string-array>
+
 </resources>

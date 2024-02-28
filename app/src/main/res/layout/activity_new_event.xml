@@ -24,12 +24,24 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/eventName"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:autofillHints="name"
+            android:ems="10"
+            android:hint="@string/eventNameHint"
+            android:inputType="text" />
+
         <Spinner
             android:id="@+id/sportSelect"
             android:layout_width="350dp"
             android:layout_height="48dp"
             android:layout_margin="10dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:entries="@array/sports" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +51,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/selectedDate"
                 android:layout_width="250dp"
                 android:layout_height="48dp"
                 android:layout_margin="10dp"
@@ -49,7 +61,7 @@
                 tools:ignore="LabelFor" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/dateShow"
                 android:layout_width="0dp"
                 android:layout_height="46dp"
                 android:layout_margin="5dp"
@@ -66,7 +78,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextDate2"
+                android:id="@+id/selectedTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -77,13 +89,20 @@
                 tools:ignore="LabelFor" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/timeShow"
                 android:layout_width="60dp"
                 android:layout_height="46dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:text="@string/timeSelect" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/createEvent"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/newEventButton" />
 
     </LinearLayout>
 
