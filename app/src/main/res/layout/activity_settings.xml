@@ -4,61 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
-    tools:context=".NewTeamActivity">
+    tools:context=".SettingsActivity">
 
     <TextView
-        android:id="@+id/newTeamTitle"
+        android:id="@+id/settingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/newTeamTitle"
+        android:layout_marginBottom="300dp"
+        android:text="@string/settingsTitle"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/teamName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/teamNameHint"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newTeamTitle" />
-
-    <Button
-        android:id="@+id/addMember"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/themeSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="@string/addMemberButton"
+        android:text="@string/switchTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/membersList" />
+        app:layout_constraintTop_toBottomOf="@+id/settingsTitle"
+        app:switchPadding="15dp" />
 
-    <Button
-        android:id="@+id/createTeam"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/notificationsSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/addTeamButton"
+        android:layout_marginTop="10dp"
+        android:text="@string/switchNotifications"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addMember" />
+        app:layout_constraintTop_toBottomOf="@+id/themeSwitch"
+        app:switchPadding="15dp" />
 
-    <ListView
-        android:id="@+id/membersList"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="40dp"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/autoThemeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/switchAutoTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teamName" />
+        app:layout_constraintTop_toBottomOf="@+id/notificationsSwitch"
+        app:switchPadding="15dp" />
+
+    <Button
+        android:id="@+id/saveSettings"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/saveSettings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autoThemeSwitch" />
 </androidx.constraintlayout.widget.ConstraintLayout>

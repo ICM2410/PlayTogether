@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
-    tools:context=".NewEventActivity">
+    android:padding="10dp"
+    tools:context=".BookingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,16 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@string/newEventTitle"
+            android:text="@string/bookFieldTitle"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/sportSelect"
-            android:layout_width="350dp"
-            android:layout_height="48dp"
-            android:layout_margin="10dp"
-            android:layout_marginTop="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +32,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/bookDate"
                 android:layout_width="250dp"
                 android:layout_height="48dp"
                 android:layout_margin="10dp"
@@ -49,7 +42,7 @@
                 tools:ignore="LabelFor" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/addDateButton"
                 android:layout_width="0dp"
                 android:layout_height="46dp"
                 android:layout_margin="5dp"
@@ -66,24 +59,32 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextDate2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/bookTime"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:autofillHints="time"
+                android:autofillHints="date"
                 android:ems="10"
                 android:inputType="date"
                 tools:ignore="LabelFor" />
 
             <Button
-                android:id="@+id/button2"
-                android:layout_width="60dp"
+                android:id="@+id/addTimeButton"
+                android:layout_width="0dp"
                 android:layout_height="46dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="@string/timeSelect" />
+                android:text="@string/dateSelect" />
+
         </LinearLayout>
+
+        <Button
+            android:id="@+id/createBooking"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="@string/createBooking" />
 
     </LinearLayout>
 

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PlayTogether</string>
-    <string name="emailHint">Email</string>
-    <string name="passwordHint">Password</string>
+    <string name="emailHint">Correo</string>
+    <string name="passwordHint">Contraseña</string>
     <string name="forgotPasswordText">¿Has olvidado tu contraseña?</string>
     <string name="login">Iniciar Sesión</string>
     <string name="registerAdvice">¿No te has registrado?</string>
@@ -29,4 +29,27 @@
     <string name="newTeam">Crear Equipo</string>
     <string name="teamsTitle">Equipos</string>
     <string name="eventsTitle">Eventos</string>
+    <string name="newTeamTitle">Crear Equipo</string>
+    <string name="teamNameHint">Nombre del equipo</string>
+    <string name="addMemberButton">Añadir Miembro</string>
+    <string name="addTeamButton">Crear Equipo</string>
+    <string name="bookFieldTitle">Reservar Cancha</string>
+    <string name="createBooking">Reservar</string>
+    <string name="settingsButton">Configuración</string>
+    <string name="profileAlt">Profile Picture</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="userEmail">correo@dominio.com</string>
+    <string name="friendsButton">Ver amigos</string>
+    <string name="editProfile">Editar Perfil</string>
+    <string name="settingsTitle">Configuración</string>
+    <string name="switchTheme">Modo Claro / Oscuro</string>
+    <string name="switchNotifications">Notificaciones</string>
+    <string name="switchAutoTheme">Alternar tema automáticamente</string>
+    <string name="saveSettings">Guardar</string>
+    <string name="friendsTitle">Amigos</string>
+    <string name="inviteButton">Invitar amigos</string>
+    <string name="signUpTitle">Registrate</string>
+    <string name="usernameHint">Nombre de usuario</string>
+    <string name="passwordConfirmHint">Confirma tu contraseña</string>
+    <string name="accountAlready">¿Ya tienes una cuenta?</string>
 </resources>
