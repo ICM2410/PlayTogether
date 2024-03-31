@@ -26,3 +26,6 @@ class MainActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener { gotToSignUp() }
     }
 }
+
+
+//Testing Commits
