@@ -1,6 +1,6 @@
 # PlayTogether
 
-¡Bienvenido al repositorio oficial de PlayTogether! 🎉
+¡Bienvenido al repositorio oficial de PlayTogether!! 🎉
 
 PlayTogether es una aplicación móvil desarrollada en Android Studio utilizando Kotlin. Esta aplicación tiene como objetivo revolucionar la forma en que los deportistas se conectan y organizan eventos deportivos.
 
