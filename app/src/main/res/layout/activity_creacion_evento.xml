@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreacionEvento">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_centerInParent="true"
+        app:cardBackgroundColor="#DDDDDD"
+        app:cardCornerRadius="16dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+    <TextView
+        android:id="@+id/nombreEventoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Evento"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/nombreEventoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nombreEventoTextView"
+        android:hint="Ingrese el nombre del evento"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/organizadorEventoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nombreEventoEditText"
+        android:text="Organizador del Evento"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/organizadorEventoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/organizadorEventoTextView"
+        android:hint="Ingrese el organizador del evento"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/fechaHoraEventoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/organizadorEventoEditText"
+        android:text="Fecha y Hora del Evento"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fechaHoraEventoTextView"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calendarView"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <NumberPicker
+            android:id="@+id/horaNumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <NumberPicker
+            android:id="@+id/minutoNumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/crearEventoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/l1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Crear Evento" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Calificacion">
+    <RatingBar
+        android:id="@+id/userRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/commentEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userRatingBar"
+        android:hint="Deja un comentario..."
+        android:maxLines="5"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/submitRatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar Calificación y Comentario"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/commentEditText"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>

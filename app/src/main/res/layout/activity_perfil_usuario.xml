@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".PerfilUsuario">
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="#DDDDDD">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+            <ImageView
+                    android:id="@+id/userProfileImageView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"/>
+
+            <TextView
+                    android:id="@+id/nombreUsuarioTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/userProfileImageView"
+                    android:text="Nombre de Usuario"
+                    android:textSize="18sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"/>
+
+            <TextView
+                    android:id="@+id/correoUsuarioTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nombreUsuarioTextView"
+                    android:text="correo@example.com"
+                    android:textSize="14sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="4dp"/>
+
+            <TextView
+                    android:id="@+id/reservasHistorialTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/correoUsuarioTextView"
+                    android:text="Historial de Reservas y Actividades"
+                    android:textSize="16sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"/>
+
+            <!-- Lista de historial de reservas y actividades aquí -->
+
+            <Button
+                    android:id="@+id/editarPerfilButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/reservasHistorialTextView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:text="Editar Perfil"/>
+
+            <Button
+                    android:id="@+id/amigosButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/editarPerfilButton"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Lista amigos"/>
+
+            <Button
+                    android:id="@+id/crearEvento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Crear evento"
+                    android:layout_below="@id/amigosButton"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="20dp"/>
+
+            <Button
+                    android:id="@+id/agregarCancha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Agregar cancha"
+                    android:layout_below="@id/crearEvento"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="20dp"/>
+
+            <Button
+                    android:id="@+id/crearEquipo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Crear equipo"
+                    android:layout_below="@id/agregarCancha"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="20dp"/>
+
+            <Button
+                    android:id="@+id/verHistorial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ver hsitorial"
+                    android:layout_below="@id/crearEquipo"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="20dp"/>
+
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CrearEquipo">
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="#DDDDDD">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/fotoEquipoImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:srcCompat="@drawable/equipos"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/nombreEquipoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre del Equipo"
+                android:textSize="18sp"
+                android:layout_below="@id/fotoEquipoImageView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/nombreEquipoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese el nombre del equipo"
+                android:layout_below="@id/nombreEquipoTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/capitanEquipoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capitán del Equipo"
+                android:textSize="18sp"
+                android:layout_below="@id/nombreEquipoEditText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/capitanEquipoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese el capitán del equipo"
+                android:layout_below="@id/capitanEquipoTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+
+            <TextView
+                android:id="@+id/deporteEquipoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deporte del Equipo"
+                android:textSize="18sp"
+                android:layout_below="@id/capitanEquipoEditText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/deporteEquipoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese el deporte del equipo"
+                android:layout_below="@id/deporteEquipoTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+
+            <Button
+                android:id="@+id/invitarAmigosButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Invitar Amigos"
+                android:layout_below="@id/deporteEquipoEditText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp" />
+
+            <Button
+                android:id="@+id/crearEquipoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crear Equipo"
+                android:layout_below="@id/invitarAmigosButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
