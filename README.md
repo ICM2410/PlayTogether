@@ -32,4 +32,4 @@ Para ejecutar el proyecto en tu máquina local, sigue estos pasos:
 
 ## Contribución
 
-¡Agradecemos contribuciones al proyecto! Si tienes ideas para mejoras, características nuevas o encuentras algún error, siéntete libre de abrir un issue o enviar un pull request con tus cambios.
+¡Agradecemos contribuciones al proyecto! Si tienes ideas para mejoras, características nuevas o encuentras algún error, siéntete libre de abrir un issue o enviar un pull request con tus cambios!
