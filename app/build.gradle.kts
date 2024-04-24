@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -39,6 +41,20 @@ android {
 }
 
 dependencies {
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+    implementation("com.google.firebase:firebase-analytics-ktx:21.6.2")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.11.1")
+    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+
+    // OpenStreetMap - Usando osmdroid como ejemplo
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
+    implementation("androidx.preference:preference-ktx:1.2.1")
+    // OSMBonusPack
+    implementation("com.github.MKergall:osmbonuspack:6.9.0")
+    //  Themes
+    implementation ("com.google.android.material:material:1.6.6")
+
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -47,4 +63,5 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
 }
