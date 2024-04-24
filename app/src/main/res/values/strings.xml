@@ -1,65 +1,13 @@
 <resources>
     <string name="app_name">PlayTogether</string>
-    <string name="emailHint">Correo</string>
-    <string name="passwordHint">Contraseña</string>
-    <string name="forgotPasswordText">¿Has olvidado tu contraseña?</string>
-    <string name="login">Iniciar Sesión</string>
-    <string name="registerAdvice">¿No te has registrado?</string>
-    <string name="registerButton">Registrate</string>
-    <string name="profileButton">Ver Perfil</string>
-    <string name="sportFilter">Deporte</string>
-    <string name="fieldFilter">Instalación</string>
-    <string name="mapAlt">Map view</string>
-    <string name="goToEvents">Eventos</string>
-    <string name="goToFields">Canchas</string>
-    <string name="goToTeams">Equipos</string>
-    <string name="newEvent">Crear evento</string>
-    <string name="newEventTitle">Crear Nuevo Evento</string>
-    <string name="dateSelect">Fecha</string>
-    <string name="timeSelect">Hora</string>
-    <string name="fieldName">Nombre de la cancha</string>
-    <string name="fieldImageAlt">Field Image</string>
-    <string name="fieldLocation">Ubicación de la cancha</string>
-    <string name="newField">Agregar Cancha</string>
-    <string name="bookField">Reservar Cancha</string>
-    <string name="fieldPhotoAdd">Agregar foto de la cancha</string>
-    <string name="fieldNameHint">Nombre de la cancha</string>
-    <string name="fieldLocationHint">Ubicación de la cancha</string>
-    <string name="addFieldButton">Agregar cancha</string>
-    <string name="newTeam">Crear Equipo</string>
-    <string name="teamsTitle">Equipos</string>
-    <string name="eventsTitle">Eventos</string>
-    <string name="newTeamTitle">Crear Equipo</string>
-    <string name="teamNameHint">Nombre del equipo</string>
-    <string name="addMemberButton">Añadir Miembro</string>
-    <string name="addTeamButton">Crear Equipo</string>
-    <string name="bookFieldTitle">Reservar Cancha</string>
-    <string name="createBooking">Reservar</string>
-    <string name="settingsButton">Configuración</string>
-    <string name="profileAlt">Profile Picture</string>
-    <string name="username">Nombre de usuario</string>
-    <string name="userEmail">correo@dominio.com</string>
-    <string name="friendsButton">Ver amigos</string>
-    <string name="editProfile">Editar Perfil</string>
-    <string name="settingsTitle">Configuración</string>
-    <string name="switchTheme">Modo Claro / Oscuro</string>
-    <string name="switchNotifications">Notificaciones</string>
-    <string name="switchAutoTheme">Alternar tema automáticamente</string>
-    <string name="saveSettings">Guardar</string>
-    <string name="friendsTitle">Amigos</string>
-    <string name="inviteButton">Invitar amigos</string>
-    <string name="signUpTitle">Registrate</string>
-    <string name="usernameHint">Nombre de usuario</string>
-    <string name="passwordConfirmHint">Confirma tu contraseña</string>
-    <string name="accountAlready">¿Ya tienes una cuenta?</string>
-    <string name="eventNameHint">Nombre del evento</string>
-    <string name="newEventButton">Crear evento</string>
-
-    <string-array name="sports">
-        <item>Futbol</item>
-        <item>Basquetbol</item>
-        <item>Ultimate</item>
-        <item>Tenis</item>
-    </string-array>
-
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_maps">Maps</string>
 </resources>

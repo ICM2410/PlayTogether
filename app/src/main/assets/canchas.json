@@ -1,0 +1,65 @@
+{
+    "canchas":[
+      { "lugar" : "Colina",
+        "nombre_cancha" : "Metropolitano",
+        "dueno" : "Juanpis",
+        "deporte" : "Futbol"
+      },
+  
+      { "lugar" : "La Felicidad",
+        "nombre_cancha" : "Rod Laver",
+        "dueno" : "Pique",
+        "deporte" : "Tenis"
+      },
+  
+      { "lugar" : "Cortijo",
+        "nombre_cancha" : "Santiago Bernabeu",
+        "dueno" : "Andres",
+        "deporte" : "Futbol"
+      },
+      
+      { "lugar" : "San Andres",
+        "nombre_cancha" : "Ball Arena",
+        "dueno" : "Oneil",
+        "deporte" : "Baloncesto"
+      },
+  
+      { "lugar" : "Chia",
+        "nombre_cancha" : "Techo",
+        "dueno" : "Anonimus",
+        "deporte" : "Futbol"
+      },
+  
+      { "lugar" : "Chia",
+        "nombre_cancha" : "Leopard Creek",
+        "dueno" : "Bale",
+        "deporte" : "Golf"
+      },
+  
+      { "lugar" : "Cajica",
+        "nombre_cancha" : "Balsamico",
+        "dueno" : "Gustavo",
+        "deporte" : "DE"
+      },
+  
+  
+      { "lugar" : "Banderas",
+        "nombre_cancha" : "Anfield",
+        "dueno" : "Eduardo",
+        "deporte" : "Ultimate"
+      },
+  
+      { "lugar" : "Modelia",
+        "nombre_cancha" : "United center",
+        "dueno" : "MJ",
+        "deporte" : "Baloncesto"
+      },
+  
+  
+      { "lugar" : "Escuela Militar",
+        "nombre_cancha" : "Pebble Beach",
+        "dueno" : "David",
+        "deporte" : "Golf"
+      }
+    ]
+  }

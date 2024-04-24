@@ -16,45 +16,72 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayTogether"
         tools:targetApi="31">
+
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <!--        <meta-data-->
+        <!--            android:name="com.google.android.geo.API_KEY"-->
+        <!--            android:value="${MAPS_API_KEY}" />-->
+
         <activity
-            android:name=".SignUpActivity"
+            android:name="together.devs.playtogether.InfoEquipo"
             android:exported="false" />
         <activity
-            android:name=".FriendsListActivity"
+            android:name="together.devs.playtogether.InfoEvento"
+            android:exported="false" />
+
+        <activity
+            android:name="together.devs.playtogether.Calificacion"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity"
+            android:name="together.devs.playtogether.ListaAmigos"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name="together.devs.playtogether.CrearEquipo"
             android:exported="false" />
         <activity
-            android:name=".BookingActivity"
+            android:name="together.devs.playtogether.Equipos"
             android:exported="false" />
         <activity
-            android:name=".NewTeamActivity"
+            android:name="together.devs.playtogether.CreacionEvento"
             android:exported="false" />
         <activity
-            android:name=".TeamsActivity"
+            android:name="together.devs.playtogether.Eventos"
             android:exported="false" />
         <activity
-            android:name=".NewFieldActivity"
+            android:name="together.devs.playtogether.AgregarCancha"
             android:exported="false" />
         <activity
-            android:name=".FieldInfoActivity"
+            android:name="together.devs.playtogether.PerfilUsuario"
             android:exported="false" />
         <activity
-            android:name=".NewEventActivity"
+            android:name="together.devs.playtogether.Reserva"
             android:exported="false" />
         <activity
-            android:name=".EventsActivity"
+            android:name="together.devs.playtogether.InfoCanchas"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name="together.devs.playtogether.Home"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name="together.devs.playtogether.Registro"
+            android:exported="false" />
+        <!--        <activity-->
+        <!--            android:name="together.devs.playtogether.ui.login.LoginActivity"-->
+        <!--            android:exported="false"-->
+        <!--            android:label="@string/title_activity_login" />-->
+        <activity
+            android:name="together.devs.playtogether.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,0 +1,65 @@
+{
+    "equipos":[
+      { "capitan" : "Julian",
+        "nombre_equipo" : "Lifailpool",
+        "miembros" : "22",
+        "deporte" : "Futbol"
+      },
+  
+      { "capitan" : "Jude",
+        "nombre_equipo" : "Madrid FC",
+        "miembros" : "25",
+        "deporte" : "Futbol"
+      },
+  
+      { "capitan" : "David",
+        "nombre_equipo" : "Los celosos",
+        "miembros" : "15",
+        "deporte" : "Voleibol"
+      },
+      
+      { "capitan" : "Gareth",
+        "nombre_equipo" : "Spurs",
+        "miembros" : "10",
+        "deporte" : "Golf"
+      },
+  
+      { "capitan" : "Felps",
+        "nombre_equipo" : "Dolphins",
+        "miembros" : "5",
+        "deporte" : "Natacion"
+      },
+  
+      { "capitan" : "Santiago",
+        "nombre_equipo" : "Faze",
+        "miembros" : "10",
+        "deporte" : "Ping Pong"
+      },
+  
+      { "capitan" : "Felipe",
+        "nombre_equipo" : "Tapitas FC",
+        "miembros" : "26",
+        "deporte" : "Futbol"
+      },
+  
+  
+      { "capitan" : "Sofia",
+        "nombre_equipo" : "Chicas del Barrio",
+        "miembros" : "17",
+        "deporte" : "Voleibol"
+      },
+  
+      { "capitan" : "Ash",
+        "nombre_equipo" : "City",
+        "miembros" : "22",
+        "deporte" : "Baloncesto"
+      },
+  
+  
+      { "capitan" : "Diego",
+        "nombre_equipo" : "Los cachorros",
+        "miembros" : "20",
+        "deporte" : "Futbol"
+      }
+    ]
+  }

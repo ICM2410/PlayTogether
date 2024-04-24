@@ -107,7 +107,7 @@
                     android:id="@+id/verHistorial"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ver hsitorial"
+                    android:text="Ver Historial"
                     android:layout_below="@id/crearEquipo"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="20dp"/>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1072101200914",
+    "project_id": "playtogether-4aa76",
+    "storage_bucket": "playtogether-4aa76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072101200914:android:80b67bcc57caf332e734cb",
+        "android_client_info": {
+          "package_name": "together.devs.playtogether"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDTfyiEeG2vV_1GwvZAG6M2tdIE9I1t-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
