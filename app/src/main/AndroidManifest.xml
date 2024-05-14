@@ -16,7 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayTogether"
         tools:targetApi="31">
-
+        <activity
+            android:name=".UserChat"
+            android:exported="false" />
+        <activity
+            android:name=".UserList"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -28,60 +33,57 @@
              project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
-        <!--        <meta-data-->
-        <!--            android:name="com.google.android.geo.API_KEY"-->
-        <!--            android:value="${MAPS_API_KEY}" />-->
-
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.geo.API_KEY" -->
+        <!-- android:value="${MAPS_API_KEY}" /> -->
         <activity
-            android:name="together.devs.playtogether.InfoEquipo"
+            android:name=".InfoEquipo"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.InfoEvento"
-            android:exported="false" />
-
-        <activity
-            android:name="together.devs.playtogether.Calificacion"
+            android:name=".InfoEvento"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.ListaAmigos"
+            android:name=".Calificacion"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.CrearEquipo"
+            android:name=".ListaAmigos"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.Equipos"
+            android:name=".CrearEquipo"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.CreacionEvento"
+            android:name=".Equipos"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.Eventos"
+            android:name=".CreacionEvento"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.AgregarCancha"
+            android:name=".Eventos"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.PerfilUsuario"
+            android:name=".AgregarCancha"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.Reserva"
+            android:name=".PerfilUsuario"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.InfoCanchas"
+            android:name=".Reserva"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.Home"
+            android:name=".InfoCanchas"
             android:exported="false" />
         <activity
-            android:name="together.devs.playtogether.Registro"
+            android:name=".Home"
             android:exported="false" />
-        <!--        <activity-->
-        <!--            android:name="together.devs.playtogether.ui.login.LoginActivity"-->
-        <!--            android:exported="false"-->
-        <!--            android:label="@string/title_activity_login" />-->
         <activity
-            android:name="together.devs.playtogether.MainActivity"
-            android:exported="true" >
+            android:name=".Registro"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name="together.devs.playtogether.ui.login.LoginActivity" -->
+        <!-- android:exported="false" -->
+        <!-- android:label="@string/title_activity_login" /> -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

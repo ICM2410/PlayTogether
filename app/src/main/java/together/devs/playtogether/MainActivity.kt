@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
@@ -52,7 +53,8 @@ class MainActivity : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            reload()
+            setOnlineStatus()
+            reload()  // Your method to reload the user interface or data
         }
     }
 
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "signInWithEmail:success")
                 val user = auth.currentUser
                 updateUI(user)
+                setOnlineStatus()  //Successful sign-in
             } else {
                 // If sign in fails, display a message to the user.
                 Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -96,5 +99,15 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "EmailPassword"
     }
+
+    private fun setOnlineStatus() {
+        val user = auth.currentUser
+        if (user != null) {
+            val onlineRef = FirebaseDatabase.getInstance().getReference("onlineUsers/${user.uid}")
+            onlineRef.setValue(true)
+            onlineRef.onDisconnect().setValue(null)  // Removes the value when user disconnects
+        }
+    }
+
 
 }

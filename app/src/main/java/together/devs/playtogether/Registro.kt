@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.database.FirebaseDatabase
 
 class Registro : AppCompatActivity() {
 
@@ -56,6 +57,8 @@ class Registro : AppCompatActivity() {
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
                     updateUI(user)
+                    setOnlineStatus()  //Successful sign-in
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -86,5 +89,13 @@ class Registro : AppCompatActivity() {
     }
 
     private fun reload() {
+    }
+    private fun setOnlineStatus() {
+        val user = auth.currentUser
+        if (user != null) {
+            val onlineRef = FirebaseDatabase.getInstance().getReference("onlineUsers/${user.uid}")
+            onlineRef.setValue(true)
+            onlineRef.onDisconnect().setValue(null)  // Removes the value when user disconnects
+        }
     }
 }
