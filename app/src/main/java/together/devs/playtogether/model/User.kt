@@ -1,8 +1,11 @@
 package together.devs.playtogether.model
 
 data class User(
-    val userName: String = "",
-    val email: String = "",
-    val profileImageUrl: String = "",
-    val teams: List<String> = listOf()
-)
+    val uid: String? = "",
+    val userName: String? = "",
+    val email: String? = "",
+    val profileImageUrl: String? = ""
+) {
+    // No-argument constructor required by Firebase
+    constructor() : this("", "", "", "")
+}

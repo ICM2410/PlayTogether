@@ -38,7 +38,6 @@ class ProfileActivity : AppCompatActivity() {
         val viewHistoryButton: Button = findViewById(R.id.viewHistoryButton)
         val editProfileButton: Button = findViewById(R.id.editProfileButton)
         val userNameTextView: TextView = findViewById(R.id.userNameTextView)
-        val userEmailTextView: TextView = findViewById(R.id.userEmailTextView)
 
         // Initialize the ActivityResultLauncher for EditProfileActivity
         editProfileLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -93,7 +92,6 @@ class ProfileActivity : AppCompatActivity() {
             userManager.getUser(it.uid) { user ->
                 user?.let { userData ->
                     findViewById<TextView>(R.id.userNameTextView).text = userData.userName
-                    findViewById<TextView>(R.id.userEmailTextView).text = userData.email
                     loadProfileImage(it.uid)
                 }
             }

@@ -1,7 +1,6 @@
 package together.devs.playtogether
 
 import android.Manifest
-import android.app.UiModeManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -38,10 +37,10 @@ import java.io.IOException
 import android.widget.Spinner
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.overlay.TilesOverlay
+import together.devs.playtogether.init.Event
 import together.devs.playtogether.init.Team
 
 class HomeActivity : AppCompatActivity(), SensorEventListener {
@@ -148,6 +147,7 @@ class HomeActivity : AppCompatActivity(), SensorEventListener {
         val but2: Button = findViewById(R.id.verEquiposButton)
         val but3: Button = findViewById(R.id.verEventosButton)
         val but4: Button = findViewById(R.id.verPerfilButton)
+        val but5: Button = findViewById(R.id.verChatButton)
 
         but2.setOnClickListener {
             intent = Intent(this, Team::class.java)
@@ -159,6 +159,10 @@ class HomeActivity : AppCompatActivity(), SensorEventListener {
         }
         but4.setOnClickListener {
             intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+        but5.setOnClickListener {
+            intent = Intent(this, ChatListActivity::class.java)
             startActivity(intent)
         }
     }

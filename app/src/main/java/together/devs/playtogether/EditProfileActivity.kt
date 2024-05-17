@@ -115,8 +115,6 @@ class EditProfileActivity : AppCompatActivity() {
                 val user = dataSnapshot.getValue<User>()
                 user?.let { userData ->
                     userNameEditText.setText(userData.userName)
-                    val teamsAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, userData.teams)
-                    teamsListView.adapter = teamsAdapter
                     loadProfileImage(userData.profileImageUrl)
                 }
             }.addOnFailureListener { e ->

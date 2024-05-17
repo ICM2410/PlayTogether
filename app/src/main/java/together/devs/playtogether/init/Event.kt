@@ -1,4 +1,4 @@
-package together.devs.playtogether
+package together.devs.playtogether.init
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ListView
 import org.json.JSONObject
+import together.devs.playtogether.R
 import together.devs.playtogether.adapters.EventosAdapter
 import together.devs.playtogether.info.EventInfo
 import java.io.IOException
@@ -16,7 +17,7 @@ class Event : AppCompatActivity() {
     private var mEventosAdapter: EventosAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_eventos)
+        setContentView(R.layout.activity_events)
         val json = JSONObject(loadJSONFromAsset())
         val eventosJSONArray = json.getJSONArray("eventos")
         val eventonombre = ArrayList<String>()

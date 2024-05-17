@@ -52,35 +52,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"/>
 
-            <TextView
-                android:id="@+id/userEmailTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/userNameTextView"
-                android:text="email@example.com"
-                android:textSize="14sp"
-                android:textColor="@android:color/darker_gray"
-                android:fontFamily="@font/antic"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="4dp"/>
-
-            <TextView
-                android:id="@+id/historyTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/userEmailTextView"
-                android:text="booking and activity history"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/antic"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/editProfileButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/historyTextView"
+                android:layout_below="@id/userNameTextView"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="14dp"
                 android:text="Edit Profile"

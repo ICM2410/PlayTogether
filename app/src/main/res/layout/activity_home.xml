@@ -29,7 +29,6 @@
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/verPerfilButton"
             android:layout_width="wrap_content"
@@ -83,8 +82,8 @@
             android:id="@+id/verEventosButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:backgroundTint="@color/black"
             android:fontFamily="@font/antic"
@@ -97,8 +96,8 @@
             android:id="@+id/verEquiposButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:backgroundTint="@color/black"
             android:fontFamily="@font/antic"
@@ -106,6 +105,19 @@
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
-    </LinearLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/verChatButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/antic"
+            android:text="Chats"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 </LinearLayout>
