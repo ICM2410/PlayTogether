@@ -1,8 +1,14 @@
 package together.devs.playtogether
 
 import android.Manifest
+import android.app.UiModeManager
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
@@ -29,12 +35,32 @@ import org.osmdroid.bonuspack.routing.OSRMRoadManager
 import java.io.IOException
 import android.widget.Spinner
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import org.osmdroid.views.overlay.TilesOverlay
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var mapView: MapView
     private var roadOverlay: Polyline? = null
     private lateinit var roadManager: RoadManager
 
+    // Sensor
+    private lateinit var sensorManager: SensorManager
+    private lateinit var accelerometer: Sensor
+    private lateinit var magnetometer: Sensor
+    private var gravity = FloatArray(3)
+    private var geomagnetic = FloatArray(3)
+    private var hasGravity = false
+    private var hasGeomagnetic = false
+    private var smoothedAzimuth = 0f
+    private var lastUpdateTime = 0L
+    private val updateInterval = 500
+    private var isCompassClicked = false
+
+    private var lightSensor: Sensor? = null
+    private lateinit var lightEventListener: SensorEventListener
+
+    private lateinit var compassImage: ImageView
     private lateinit var Direccion: EditText
     private var deporteSeleccionado: String = "Todos"
     private val markers = ArrayList<Marker>()
@@ -58,9 +84,31 @@ class HomeActivity : AppCompatActivity() {
         val fineLocationPermission = Manifest.permission.ACCESS_FINE_LOCATION
         val coarseLocationPermission = Manifest.permission.ACCESS_COARSE_LOCATION
 
-        Direccion = findViewById(R.id.texto)
+        compassImage = findViewById(R.id.compassImage)
+
+
+        Direccion = findViewById(R.id.address)
 
         roadManager = OSRMRoadManager(this, "ANDROID")
+
+        // Sensor initialization
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
+        // Light Sensor
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT)
+        if (lightSensor == null) {
+            Toast.makeText(this, "No light sensor found!", Toast.LENGTH_SHORT).show()
+        } else {
+            lightEventListener = createLightSensorListener()
+            sensorManager.registerListener(
+                lightEventListener, lightSensor, SensorManager.SENSOR_DELAY_NORMAL
+            )
+        }
+
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)!!
+        magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)!!
+
+
 
         if (ContextCompat.checkSelfPermission(
                 this, fineLocationPermission
@@ -153,7 +201,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         but3.setOnClickListener {
-            intent = Intent(this, Eventos::class.java)
+            intent = Intent(this, Event::class.java)
             startActivity(intent)
         }
         but4.setOnClickListener {
@@ -201,6 +249,13 @@ class HomeActivity : AppCompatActivity() {
 
         // Reanudar el mapa de OSMDroid
         mapView.onResume()
+
+        sensorManager.registerListener(
+            lightEventListener, lightSensor, SensorManager.SENSOR_DELAY_NORMAL
+        )
+        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI)
+        sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI)
+
 
         // Obtener la ubicación actual
         val currentLocation = getCurrentLocation()
@@ -259,6 +314,14 @@ class HomeActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Ubicación no encontrada", Toast.LENGTH_SHORT).show()
         }
+
+        val uims = getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
+        if (uims.nightMode == UiModeManager.MODE_NIGHT_YES) {
+            mapView.overlayManager.tilesOverlay.setColorFilter(TilesOverlay.INVERT_COLORS)
+        }
+        sensorManager.registerListener(
+            lightEventListener, lightSensor, SensorManager.SENSOR_DELAY_NORMAL
+        )
     }
 
     private fun showMarker(geoPoint: org.osmdroid.util.GeoPoint, markerName: String, tipo: String) {
@@ -356,7 +419,8 @@ class HomeActivity : AppCompatActivity() {
                 drawRoadOverlay(result)
             } else {
                 // Mostrar un mensaje de error en caso de que no se pueda obtener la ruta
-                Toast.makeText(this@HomeActivity, "Error al obtener la ruta", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@HomeActivity, "Error al obtener la ruta", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
@@ -450,14 +514,82 @@ class HomeActivity : AppCompatActivity() {
         return marcadoresDeportes[titulo] ?: "Desconocido"
     }
 
+    fun createLightSensorListener(): SensorEventListener {
+        return object : SensorEventListener {
+            override fun onSensorChanged(event: SensorEvent) {
+                if (event.sensor.type == Sensor.TYPE_LIGHT) {
+                    val lux = event.values[0]
+                    if (lux < 10) {
+                        mapView.overlayManager.tilesOverlay.setColorFilter(TilesOverlay.INVERT_COLORS)
+                    } else {
+                        mapView.overlayManager.tilesOverlay.setColorFilter(null)
+                    }
+                }
+            }
+
+            override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
+        }
+    }
+
+    override fun onSensorChanged(event: SensorEvent) {
+        when (event.sensor.type) {
+            Sensor.TYPE_ACCELEROMETER -> {
+                gravity = event.values.clone()
+                hasGravity = true
+            }
+            Sensor.TYPE_MAGNETIC_FIELD -> {
+                geomagnetic = event.values.clone()
+                hasGeomagnetic = true
+            }
+        }
+
+        if (hasGravity && hasGeomagnetic) {
+            val rotationMatrix = FloatArray(9)
+            val success = SensorManager.getRotationMatrix(rotationMatrix, null, gravity, geomagnetic)
+            if (success) {
+                val orientation = FloatArray(3)
+                SensorManager.getOrientation(rotationMatrix, orientation)
+                var azimuth = Math.toDegrees(orientation[0].toDouble()).toFloat()
+                azimuth = (azimuth + 360) % 360
+
+                // Apply low-pass filter
+                smoothedAzimuth = lowPassFilter(azimuth, smoothedAzimuth)
+
+                val currentTime = System.currentTimeMillis()
+                if (currentTime - lastUpdateTime > updateInterval) {
+                    lastUpdateTime = currentTime
+                    // Update compass image rotation
+                    compassImage.rotation = -smoothedAzimuth
+                }
+            }
+        }
+    }
+
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        // No action needed
+    }
+
+
+    private fun lowPassFilter(input: Float, output: Float): Float {
+        val alpha = 0.25f
+        return output + alpha * (input - output)
+    }
+
 
     override fun onPause() {
         super.onPause()
         mapView.onPause()
+        sensorManager.unregisterListener(this, accelerometer)
+        sensorManager.unregisterListener(this, magnetometer)
+        sensorManager.unregisterListener(lightEventListener)
     }
 
     companion object {
         const val LOCALIZACION = 1
 
     }
+
+
+
 }

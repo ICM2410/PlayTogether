@@ -3,23 +3,28 @@ package together.devs.playtogether
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import together.devs.playtogether.firebase.UserManager
 import together.devs.playtogether.info.CourtInfo
 
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var userManager: UserManager
+    private lateinit var userProfileImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
         userManager = UserManager(Firebase.database)
+        userProfileImageView = findViewById(R.id.userProfileImageView)
 
         val addCourtButton: Button = findViewById(R.id.addCourtButton)
         val friendsButton: Button = findViewById(R.id.friendsButton)
@@ -34,9 +39,10 @@ class ProfileActivity : AppCompatActivity() {
         val currentUser = Firebase.auth.currentUser
         currentUser?.let {
             userManager.getUser(it.uid) { user ->
-                user?.let {
-                    userNameTextView.text = user.userName
+                user?.let { userData ->
+                    userNameTextView.text = userData.userName
                     userEmailTextView.text = currentUser.email
+                    loadProfileImage(currentUser.uid)
                 }
             }
         }
@@ -47,7 +53,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         createEventButton.setOnClickListener {
-            intent = Intent(this, CreacionEvento::class.java)
+            intent = Intent(this, CreateEvent::class.java)
             startActivity(intent)
         }
 
@@ -57,7 +63,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         createTeamButton.setOnClickListener {
-            intent = Intent(this, CrearEquipo::class.java)
+            intent = Intent(this, CreateTeam::class.java)
             startActivity(intent)
         }
 
@@ -68,8 +74,19 @@ class ProfileActivity : AppCompatActivity() {
 
         editProfileButton.setOnClickListener {
             Firebase.auth.signOut()
-            intent = Intent(this, MainActivity::class.java)
+            intent = Intent(this, EditProfileActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun loadProfileImage(userId: String) {
+        val storageRef = FirebaseStorage.getInstance().reference
+        val profileImageRef = storageRef.child("profile_images/$userId.jpg")
+
+        profileImageRef.downloadUrl.addOnSuccessListener { uri ->
+            Glide.with(this).load(uri).into(userProfileImageView)
+        }.addOnFailureListener { e ->
+            // Handle any errors
         }
     }
 }

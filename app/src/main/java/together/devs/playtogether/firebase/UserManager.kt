@@ -60,7 +60,7 @@ class UserManager(private val database: FirebaseDatabase) {
         }
     }
 
-    fun updateUserProfile(userId: String, imageUrl: String, userName: String, password: String) {
+    fun updateUserProfile(userId: String, imageUrl: String, userName: String) {
         val updateMap = mapOf(
             "profileImageUrl" to imageUrl,
             "userName" to userName
@@ -68,29 +68,17 @@ class UserManager(private val database: FirebaseDatabase) {
         userReference.child(userId).updateChildren(updateMap).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Log.d(ContentValues.TAG, "User profile updated successfully")
-                updatePassword(password)
             } else {
                 Log.e(ContentValues.TAG, "Failed to update user profile: ${task.exception?.message}")
             }
         }
     }
 
-    private fun updatePassword(newPassword: String) {
-        val user = auth.currentUser
-        user?.updatePassword(newPassword)?.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Log.d(ContentValues.TAG, "Password updated successfully")
-            } else {
-                Log.e(ContentValues.TAG, "Failed to update password: ${task.exception?.message}")
-            }
-        }
-    }
-
-    fun uploadProfileImage(userId: String, imageUri: Uri, userName: String, password: String) {
+    fun uploadProfileImage(userId: String, imageUri: Uri, userName: String) {
         val storageRef = FirebaseStorage.getInstance().getReference("profile_images/$userId.jpg")
         storageRef.putFile(imageUri).addOnSuccessListener { taskSnapshot ->
             taskSnapshot.storage.downloadUrl.addOnSuccessListener { downloadUri ->
-                updateUserProfile(userId, downloadUri.toString(), userName, password)
+                updateUserProfile(userId, downloadUri.toString(), userName)
             }.addOnFailureListener { e ->
                 Log.e(ContentValues.TAG, "Getting download URL failed: ${e.message}")
             }

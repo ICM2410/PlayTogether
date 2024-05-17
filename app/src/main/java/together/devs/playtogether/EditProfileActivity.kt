@@ -28,7 +28,6 @@ class EditProfileActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var userNameEditText: TextInputEditText
-    private lateinit var passwordEditText: TextInputEditText
     private lateinit var imageViewProfile: ImageView
     private lateinit var userManager: UserManager
     private lateinit var teamsListView: ListView
@@ -43,12 +42,10 @@ class EditProfileActivity : AppCompatActivity() {
         userManager = UserManager(FirebaseDatabase.getInstance())
 
         userNameEditText = findViewById(R.id.userNameEditText)
-        passwordEditText = findViewById(R.id.passwordEditText)
         imageViewProfile = findViewById(R.id.profile_image)
         teamsListView = findViewById(R.id.teamsListView)
 
         loadUserProfile()
-        loadProfileImage()
 
         val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             selectedImageUri = uri
@@ -61,11 +58,10 @@ class EditProfileActivity : AppCompatActivity() {
 
         findViewById<MaterialButton>(R.id.saveButton).setOnClickListener {
             val userName = userNameEditText.text.toString()
-            val password = passwordEditText.text.toString()
             if (selectedImageUri != null) {
-                userManager.uploadProfileImage(auth.currentUser!!.uid, selectedImageUri!!, userName, password)
+                userManager.uploadProfileImage(auth.currentUser!!.uid, selectedImageUri!!, userName)
             } else {
-                userManager.updateUserProfile(auth.currentUser!!.uid, "", userName, password)
+                userManager.updateUserProfile(auth.currentUser!!.uid, "", userName)
             }
         }
     }
@@ -80,21 +76,26 @@ class EditProfileActivity : AppCompatActivity() {
                     userNameEditText.setText(userData.userName)
                     val teamsAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, userData.teams)
                     teamsListView.adapter = teamsAdapter
+                    loadProfileImage(userData.profileImageUrl)
                 }
             }
         }
     }
 
-    private fun loadProfileImage() {
-        val userId = auth.currentUser?.uid
-        if (userId != null) {
-            val storageRef = FirebaseStorage.getInstance().reference
-            val profileImageRef = storageRef.child("profile_images/$userId.jpg")
+    private fun loadProfileImage(imageUrl: String?) {
+        if (!imageUrl.isNullOrEmpty()) {
+            Glide.with(this).load(imageUrl).into(imageViewProfile)
+        } else {
+            val userId = auth.currentUser?.uid
+            if (userId != null) {
+                val storageRef = FirebaseStorage.getInstance().reference
+                val profileImageRef = storageRef.child("profile_images/$userId.jpg")
 
-            profileImageRef.downloadUrl.addOnSuccessListener { uri ->
-                Glide.with(this).load(uri).into(imageViewProfile)
-            }.addOnFailureListener { e ->
-                Log.e(TAG, "Error loading profile image", e)
+                profileImageRef.downloadUrl.addOnSuccessListener { uri ->
+                    Glide.with(this).load(uri).into(imageViewProfile)
+                }.addOnFailureListener { e ->
+                    Log.e(TAG, "Error loading profile image", e)
+                }
             }
         }
     }

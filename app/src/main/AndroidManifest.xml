@@ -19,9 +19,6 @@
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
-        <activity
-            android:name=".AvailableUsers"
-            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -49,16 +46,16 @@
             android:name=".ContactListActivity"
             android:exported="false" />
         <activity
-            android:name=".CrearEquipo"
+            android:name=".CreateTeam"
             android:exported="false" />
         <activity
             android:name=".Team"
             android:exported="false" />
         <activity
-            android:name=".CreacionEvento"
+            android:name=".CreateEvent"
             android:exported="false" />
         <activity
-            android:name=".Eventos"
+            android:name=".Event"
             android:exported="false" />
         <activity
             android:name=".AddCourt"

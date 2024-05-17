@@ -11,7 +11,7 @@ import together.devs.playtogether.info.EventInfo
 import java.io.IOException
 import java.io.InputStream
 
-class Eventos : AppCompatActivity() {
+class Event : AppCompatActivity() {
     private lateinit var eventosListView: ListView
     private var mEventosAdapter: EventosAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
