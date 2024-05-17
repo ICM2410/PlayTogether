@@ -60,7 +60,7 @@ class RegisterActivity : AppCompatActivity() {
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
                     user?.let {
-                        val userObj = User(userName = userName, available = true)
+                        val userObj = User(userName = userName, email = email)
                         userManager.saveUser(it.uid, userObj)
                     }
                     updateUI(user)
@@ -76,15 +76,20 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
+
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            val intent = Intent(this, MainActivity::class.java)
+            // User is signed in, navigate to the main profile screen or update the UI accordingly
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+            finish()
         } else {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            // User is signed out, show a message or update the UI accordingly
+            // E.g., show a Toast message
+            Toast.makeText(this, "Sign-in failed. Please try again.", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     companion object {
         private const val TAG = "EmailPassword"

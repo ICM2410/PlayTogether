@@ -24,6 +24,16 @@ class UserManager(private val database: FirebaseDatabase) {
         }
     }
 
+    fun saveUser(userId: String, user: User) {
+        userReference.child(userId).setValue(user).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Log.d(ContentValues.TAG, "User data saved successfully")
+            } else {
+                Log.e(ContentValues.TAG, "Failed to save user data: ${task.exception?.message}")
+            }
+        }
+    }
+
     fun toggleUserAvailability() {
         val user = auth.currentUser
         user?.let { currentUser ->
@@ -50,16 +60,6 @@ class UserManager(private val database: FirebaseDatabase) {
         } ?: Log.e(ContentValues.TAG, "No user logged in")
     }
 
-    fun saveUser(userId: String, user: User) {
-        userReference.child(userId).setValue(user).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Log.d(ContentValues.TAG, "User data saved successfully")
-            } else {
-                Log.e(ContentValues.TAG, "Failed to save user data: ${task.exception?.message}")
-            }
-        }
-    }
-
     fun updateUserProfile(userId: String, imageUrl: String, userName: String) {
         val updateMap = mapOf(
             "profileImageUrl" to imageUrl,
@@ -75,7 +75,7 @@ class UserManager(private val database: FirebaseDatabase) {
     }
 
     fun uploadProfileImage(userId: String, imageUri: Uri, userName: String) {
-        val storageRef = FirebaseStorage.getInstance().getReference("profile_images/$userId.jpg")
+        val storageRef = FirebaseStorage.getInstance().reference.child("profile_images/$userId.jpg")
         storageRef.putFile(imageUri).addOnSuccessListener { taskSnapshot ->
             taskSnapshot.storage.downloadUrl.addOnSuccessListener { downloadUri ->
                 updateUserProfile(userId, downloadUri.toString(), userName)

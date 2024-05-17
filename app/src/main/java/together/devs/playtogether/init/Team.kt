@@ -1,4 +1,4 @@
-package together.devs.playtogether
+package together.devs.playtogether.init
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ListView
 import org.json.JSONObject
+import together.devs.playtogether.R
 import together.devs.playtogether.adapters.EquiposAdapter
 import together.devs.playtogether.info.TeamInfo
 import java.io.IOException

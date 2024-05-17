@@ -57,12 +57,21 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="-5dp"
-                android:background="@android:color/background_light"
                 android:backgroundTint="@android:color/background_light"
-                android:contextClickable="true"
                 android:src="@drawable/add_photo_alternate_24px"
                 app:fabCustomSize="35dp" />
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/takePhotoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pickImage"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="-5dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@android:color/background_light"
+                android:src="@drawable/baseline_camera_24"
+                app:fabCustomSize="35dp" />
         </RelativeLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -81,23 +90,6 @@
 
 
 
-
-        <TextView
-            android:id="@+id/teamsTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Teams"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/antic" />
-
-        <ListView
-            android:id="@+id/teamsListView"
-            android:layout_width="match_parent"
-            android:layout_height="166dp"
-            android:layout_marginTop="10dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/saveButton"

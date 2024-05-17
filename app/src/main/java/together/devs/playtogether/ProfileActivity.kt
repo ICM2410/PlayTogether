@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
@@ -13,11 +15,14 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import together.devs.playtogether.firebase.UserManager
 import together.devs.playtogether.info.CourtInfo
+import together.devs.playtogether.model.User
 
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var userManager: UserManager
     private lateinit var userProfileImageView: ImageView
+
+    private lateinit var editProfileLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,17 +40,21 @@ class ProfileActivity : AppCompatActivity() {
         val userNameTextView: TextView = findViewById(R.id.userNameTextView)
         val userEmailTextView: TextView = findViewById(R.id.userEmailTextView)
 
-        // Load user name and email
-        val currentUser = Firebase.auth.currentUser
-        currentUser?.let {
-            userManager.getUser(it.uid) { user ->
-                user?.let { userData ->
-                    userNameTextView.text = userData.userName
-                    userEmailTextView.text = currentUser.email
-                    loadProfileImage(currentUser.uid)
+        // Initialize the ActivityResultLauncher for EditProfileActivity
+        editProfileLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                // Reload the profile image
+                val userId = Firebase.auth.currentUser?.uid
+                if (userId != null) {
+                    loadProfileImage(userId)
                 }
+                // Reload user name and email
+                loadUserProfile()
             }
         }
+
+        // Load user profile data
+        loadUserProfile()
 
         friendsButton.setOnClickListener {
             intent = Intent(this, ContactListActivity::class.java)
@@ -73,9 +82,21 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         editProfileButton.setOnClickListener {
-            Firebase.auth.signOut()
-            intent = Intent(this, EditProfileActivity::class.java)
-            startActivity(intent)
+            val intent = Intent(this, EditProfileActivity::class.java)
+            editProfileLauncher.launch(intent)
+        }
+    }
+
+    private fun loadUserProfile() {
+        val currentUser = Firebase.auth.currentUser
+        currentUser?.let {
+            userManager.getUser(it.uid) { user ->
+                user?.let { userData ->
+                    findViewById<TextView>(R.id.userNameTextView).text = userData.userName
+                    findViewById<TextView>(R.id.userEmailTextView).text = userData.email
+                    loadProfileImage(it.uid)
+                }
+            }
         }
     }
 
