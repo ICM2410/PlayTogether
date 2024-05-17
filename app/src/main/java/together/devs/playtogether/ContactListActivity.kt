@@ -6,14 +6,14 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import android.Manifest
-import android.content.Intent
 import android.database.Cursor
 import android.widget.ListView
 import android.provider.ContactsContract
 import android.widget.AdapterView
+import together.devs.playtogether.adapters.ContactsAdapter
 
 
-class ListaAmigos : AppCompatActivity() {
+class ContactListActivity : AppCompatActivity() {
     private lateinit var contactListView: ListView
     private lateinit var mProjection: Array<String>
     private var mCursor: Cursor? = null
@@ -21,7 +21,7 @@ class ListaAmigos : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lista_amigos)
+        setContentView(R.layout.activity_friend_list)
         contactListView = findViewById(R.id.listaAmigos)
         mProjection = arrayOf(ContactsContract.Profile._ID, ContactsContract.Profile.DISPLAY_NAME_PRIMARY)
 

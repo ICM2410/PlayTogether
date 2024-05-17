@@ -18,9 +18,6 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.Polyline
-import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
-import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
-import org.osmdroid.views.overlay.ItemizedIconOverlay
 import org.osmdroid.bonuspack.routing.Road
 import org.osmdroid.bonuspack.routing.RoadManager
 import android.os.AsyncTask
@@ -32,12 +29,8 @@ import org.osmdroid.bonuspack.routing.OSRMRoadManager
 import java.io.IOException
 import android.widget.Spinner
 import android.widget.ArrayAdapter
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
-class Home : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     private lateinit var mapView: MapView
     private var roadOverlay: Polyline? = null
     private lateinit var roadManager: RoadManager
@@ -57,7 +50,8 @@ class Home : AppCompatActivity() {
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Configuration.getInstance().load(applicationContext, getSharedPreferences("osmdroid", MODE_PRIVATE))
+        Configuration.getInstance()
+            .load(applicationContext, getSharedPreferences("osmdroid", MODE_PRIVATE))
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -78,7 +72,9 @@ class Home : AppCompatActivity() {
             // Mostrar explicación si es necesario (esto es opcional)
             if (ActivityCompat.shouldShowRequestPermissionRationale(
                     this, fineLocationPermission
-                ) || ActivityCompat.shouldShowRequestPermissionRationale(this, coarseLocationPermission)
+                ) || ActivityCompat.shouldShowRequestPermissionRationale(
+                    this, coarseLocationPermission
+                )
             ) {
                 // Puedes mostrar una explicación aquí si lo deseas.
             }
@@ -99,7 +95,9 @@ class Home : AppCompatActivity() {
             spinnerDeportes.adapter = adapter
 
             spinnerDeportes.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?, view: View?, position: Int, id: Long
+                ) {
                     val deporte = deportes[position]
                     deporteSeleccionado = deporte
                     aplicarFiltroDeporte(deporte)
@@ -132,7 +130,9 @@ class Home : AppCompatActivity() {
                             mapController.setZoom(18.0)  // Puedes ajustar el nivel de zoom
                             mapController.setCenter(geoPoint)
                         } else {
-                            Toast.makeText(this, "La direccion no pudo ser encontrada", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this, "La direccion no pudo ser encontrada", Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                     return@setOnEditorActionListener true // Agregar esta línea
@@ -149,7 +149,7 @@ class Home : AppCompatActivity() {
 
 
         but2.setOnClickListener {
-            intent = Intent(this, Equipos::class.java)
+            intent = Intent(this, Team::class.java)
             startActivity(intent)
         }
         but3.setOnClickListener {
@@ -157,7 +157,7 @@ class Home : AppCompatActivity() {
             startActivity(intent)
         }
         but4.setOnClickListener {
-            intent = Intent(this, PerfilUsuario::class.java)
+            intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 
@@ -188,7 +188,9 @@ class Home : AppCompatActivity() {
             if (fineLocationGranted && coarseLocationGranted) {
                 Toast.makeText(this, "PERMISOS DE LOCALIZACIÓN DADOS", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "ALGUNO DE LOS PERMISOS DE LOCALIZACIÓN NO FUE DADO", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this, "ALGUNO DE LOS PERMISOS DE LOCALIZACIÓN NO FUE DADO", Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -210,7 +212,11 @@ class Home : AppCompatActivity() {
 
             // Configurar el zoom y el centro del mapa en la ubicación actual
             mapController.setZoom(18.0)
-            mapController.setCenter(org.osmdroid.util.GeoPoint(currentLocation.latitude, currentLocation.longitude))
+            mapController.setCenter(
+                org.osmdroid.util.GeoPoint(
+                    currentLocation.latitude, currentLocation.longitude
+                )
+            )
 
             // Establecer marcadores en el mapa
             showMarker(
@@ -218,12 +224,36 @@ class Home : AppCompatActivity() {
                 "Ubicacion actual",
                 "U_A"
             )
-            showMarker(org.osmdroid.util.GeoPoint(4.647327414834436, -74.07575100117528), "Cancha Tenis", "C_TENIS")
-            showMarker(org.osmdroid.util.GeoPoint(4.7112444237342395, -74.07177802349177), "Cancha Fútbol", "C_FUT")
-            showMarker(org.osmdroid.util.GeoPoint(4.704653322769599, -74.12105912354257), "Cancha Americano", "C_FUTA")
-            showMarker(org.osmdroid.util.GeoPoint(4.734634729222503, -74.0615729005996), "Cancha Voleibol", "C_VOL")
-            showMarker(org.osmdroid.util.GeoPoint(4.713044447775575, -74.14344360073954), "Cancha Baloncesto", "C_BAL")
-            showMarker(org.osmdroid.util.GeoPoint(4.664892128032969, -74.09746650107071), "Cancha Beisbol", "C_BEI")
+            showMarker(
+                org.osmdroid.util.GeoPoint(4.647327414834436, -74.07575100117528),
+                "Cancha Tenis",
+                "C_TENIS"
+            )
+            showMarker(
+                org.osmdroid.util.GeoPoint(4.7112444237342395, -74.07177802349177),
+                "Cancha Fútbol",
+                "C_FUT"
+            )
+            showMarker(
+                org.osmdroid.util.GeoPoint(4.704653322769599, -74.12105912354257),
+                "Cancha Americano",
+                "C_FUTA"
+            )
+            showMarker(
+                org.osmdroid.util.GeoPoint(4.734634729222503, -74.0615729005996),
+                "Cancha Voleibol",
+                "C_VOL"
+            )
+            showMarker(
+                org.osmdroid.util.GeoPoint(4.713044447775575, -74.14344360073954),
+                "Cancha Baloncesto",
+                "C_BAL"
+            )
+            showMarker(
+                org.osmdroid.util.GeoPoint(4.664892128032969, -74.09746650107071),
+                "Cancha Beisbol",
+                "C_BEI"
+            )
 
 
         } else {
@@ -252,12 +282,15 @@ class Home : AppCompatActivity() {
         when (tipo) {
             "U_A" -> marker.icon = resources.getDrawable(R.drawable.baseline_emoji_people_24, theme)
             "C_TENIS" -> marker.icon = resources.getDrawable(R.drawable.pista_de_tenis, theme)
-            "C_FUTA" -> marker.icon = resources.getDrawable(R.drawable.campo_de_futbol_americano, theme)
+            "C_FUTA" -> marker.icon =
+                resources.getDrawable(R.drawable.campo_de_futbol_americano, theme)
+
             "C_BAL" -> marker.icon = resources.getDrawable(R.drawable.pista_de_baloncesto, theme)
             "C_FUT" -> marker.icon = resources.getDrawable(R.drawable.campo_de_futbol, theme)
             "C_VOL" -> marker.icon = resources.getDrawable(R.drawable.red_de_voleibol, theme)
             "C_BEI" -> marker.icon = resources.getDrawable(R.drawable.campo_de_beisbol, theme)
-            "B_Dir" -> marker.icon = resources.getDrawable(R.drawable.baseline_location_on_24, theme)
+            "B_Dir" -> marker.icon =
+                resources.getDrawable(R.drawable.baseline_location_on_24, theme)
 
 
         }
@@ -297,10 +330,16 @@ class Home : AppCompatActivity() {
             // Obtener la ubicación actual del usuario
             val currentLocation = getCurrentLocation()
             if (currentLocation != null) {
-                routePoints.add(org.osmdroid.util.GeoPoint(currentLocation.latitude, currentLocation.longitude))
+                routePoints.add(
+                    org.osmdroid.util.GeoPoint(
+                        currentLocation.latitude, currentLocation.longitude
+                    )
+                )
             } else {
                 // Mostrar un mensaje de error si no se pudo obtener la ubicación actual
-                Toast.makeText(this@Home, "No se pudo obtener la ubicación actual", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@HomeActivity, "No se pudo obtener la ubicación actual", Toast.LENGTH_SHORT
+                ).show()
                 return null
             }
 
@@ -317,7 +356,7 @@ class Home : AppCompatActivity() {
                 drawRoadOverlay(result)
             } else {
                 // Mostrar un mensaje de error en caso de que no se pueda obtener la ruta
-                Toast.makeText(this@Home, "Error al obtener la ruta", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@HomeActivity, "Error al obtener la ruta", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -342,7 +381,11 @@ class Home : AppCompatActivity() {
 
                 // Configurar el zoom y el centro del mapa en la ubicación actual
                 mapController.setZoom(18.0)
-                mapController.setCenter(org.osmdroid.util.GeoPoint(currentLocation.latitude, currentLocation.longitude))
+                mapController.setCenter(
+                    org.osmdroid.util.GeoPoint(
+                        currentLocation.latitude, currentLocation.longitude
+                    )
+                )
 
                 // Establecer marcadores en el mapa
                 showMarker(
@@ -367,7 +410,9 @@ class Home : AppCompatActivity() {
                 val addresses = mGeocoder.getFromLocationName(addressString, 2)
                 if (!addresses.isNullOrEmpty()) {
                     val addressResult = addresses[0]
-                    return org.osmdroid.util.GeoPoint(addressResult.latitude, addressResult.longitude)
+                    return org.osmdroid.util.GeoPoint(
+                        addressResult.latitude, addressResult.longitude
+                    )
                 }
             } catch (e: IOException) {
                 Log.e("Error", "Error en buscarDireccion: ${e.message}")

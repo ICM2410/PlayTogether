@@ -4,13 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
-import android.widget.Button
 import android.widget.ListView
 import org.json.JSONObject
+import together.devs.playtogether.adapters.EquiposAdapter
+import together.devs.playtogether.info.TeamInfo
 import java.io.IOException
 import java.io.InputStream
 
-class Equipos : AppCompatActivity() {
+class Team : AppCompatActivity() {
     private lateinit var equiposListView: ListView
     private var mEquiposAdapter: EquiposAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +35,7 @@ class Equipos : AppCompatActivity() {
         equiposListView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, _, position, _ ->
                 val equipoNombre = parent.getItemAtPosition(position) as String
-                val intent = Intent(this, InfoEquipo::class.java)
+                val intent = Intent(this, TeamInfo::class.java)
                 intent.putExtra("equipoElegido", equipoNombre)
                 startActivity(intent)
             }

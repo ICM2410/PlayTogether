@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="20dp"
-    tools:context=".MainActivity">
+    android:padding="10dp"
+    tools:context=".RegisterActivity">
 
     <TextView
-        android:id="@+id/textViewAppName"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/antic"
         android:gravity="center"
-        android:text="PlayTogether"
+        android:text="Create Account"
+
         android:textColor="#0d74e7"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout"
-        android:layout_marginBottom="24dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -32,24 +31,39 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewAppName">
+        app:layout_constraintTop_toBottomOf="@id/title">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic"
+                android:hint="User Name"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textColorHint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/emailET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/antic"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:textSize="15sp" />
@@ -57,76 +71,80 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textColorHint="@color/black"
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/passwordET"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/antic"
                 android:hint="Password"
                 android:inputType="textPassword"
+                android:paddingEnd="40dp"
                 android:textSize="15sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/textViewForgotPassword"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Forgot your password?"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:fontFamily="@font/antic"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmPasswordET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:paddingEnd="40dp"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonLogin"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:backgroundTint="#0d74e7"
             android:fontFamily="@font/antic"
-            android:text="Log In"
-            android:textSize="18sp"
+            android:text="Register"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            app:layout_constraintTop_toBottomOf="@id/buttonLogin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textViewRegisterPrompt"
+                android:id="@+id/textViewAlreadyAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Not registered?"
                 android:fontFamily="@font/antic"
-                android:textAlignment="textEnd" />
+                android:gravity="center"
+                android:text="Already have an account?"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textViewRegister"
+                android:id="@+id/loginTvBTN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign Up"
+                android:layout_marginStart="8dp"
                 android:fontFamily="@font/antic"
-                android:paddingStart="8dp" />
-
+                android:gravity="center"
+                android:text="Log In"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
-    </LinearLayout>
 
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,167 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCourt"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@android:color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/photoImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/estadios"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/nombreCanchaTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Court Name"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/antic"
+                app:layout_constraintTop_toBottomOf="@id/photoImageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nombreCanchaLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/nombreCanchaTextView"
+                android:layout_margin="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nombreCanchaEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter court name"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/antic" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/ubicacionCanchaTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Court Location"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/antic"
+                app:layout_constraintTop_toBottomOf="@id/nombreCanchaLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ubicacionCanchaLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ubicacionCanchaTextView"
+                android:layout_margin="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ubicacionCanchaEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter court location"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/antic" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/duenoCanchaTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Court Owner"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/antic"
+                app:layout_constraintTop_toBottomOf="@id/ubicacionCanchaLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/duenoCanchaLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/duenoCanchaTextView"
+                android:layout_margin="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/duenoCanchaEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter court owner"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/antic" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/deporteCanchaTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Court Sport"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/antic"
+                app:layout_constraintTop_toBottomOf="@id/duenoCanchaLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/deporteCanchaLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/deporteCanchaTextView"
+                android:layout_margin="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/deporteCanchaEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter court sport"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/antic" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/guardarCanchaButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:backgroundTint="#0d74e7"
+                app:cornerRadius="8dp"
+                android:fontFamily="@font/antic"
+                android:text="Save Court"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/deporteCanchaLayout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

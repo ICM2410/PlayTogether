@@ -1,4 +1,4 @@
-package together.devs.playtogether
+package together.devs.playtogether.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import together.devs.playtogether.R
 
 class EventosAdapter(context: Context, resource: Int, objects: List<String>) : ArrayAdapter<String>(context, resource, objects) {
     private val EVENTOS_NAME_INDEX = 1 // Índice del nombre del país en el cursor

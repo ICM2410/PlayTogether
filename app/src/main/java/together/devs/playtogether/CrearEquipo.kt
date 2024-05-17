@@ -11,7 +11,7 @@ class CrearEquipo : AppCompatActivity() {
         setContentView(R.layout.activity_crear_equipo)
         val amigos:Button=findViewById(R.id.invitarAmigosButton)
         amigos.setOnClickListener {
-            intent= Intent(this,ListaAmigos::class.java)
+            intent= Intent(this,ContactListActivity::class.java)
             startActivity(intent)
         }
     }

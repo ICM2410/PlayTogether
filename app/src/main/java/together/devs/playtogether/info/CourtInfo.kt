@@ -1,4 +1,4 @@
-package together.devs.playtogether
+package together.devs.playtogether.info
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,11 +6,13 @@ import android.widget.AdapterView
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONObject
+import together.devs.playtogether.R
+import together.devs.playtogether.Reserva
 import java.io.IOException
 import java.io.InputStream
-import android.widget.Button
+import together.devs.playtogether.adapters.CanchasAdapter
 
-class InfoCanchas : AppCompatActivity() {
+class CourtInfo : AppCompatActivity() {
     private lateinit var canchasListView: ListView
     private var mCanchasAdapter: CanchasAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {

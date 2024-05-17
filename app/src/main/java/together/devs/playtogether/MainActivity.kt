@@ -22,11 +22,11 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        val emailEditText: EditText = findViewById(R.id.editTextText2)
-        val passwordEditText: EditText = findViewById(R.id.editTextText3)
-        val signInButton: Button = findViewById(R.id.button2)
+        val emailEditText: EditText = findViewById(R.id.editTextEmail)
+        val passwordEditText: EditText = findViewById(R.id.editTextPassword)
+        val signInButton: Button = findViewById(R.id.buttonLogin)
 
-        val reg: TextView = findViewById(R.id.text6)
+        val reg: TextView = findViewById(R.id.textViewRegister)
 
         signInButton.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -36,12 +36,12 @@ class MainActivity : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 signIn(email, password)
             } else {
-                Toast.makeText(this, "Llena todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             }
         }
 
         reg.setOnClickListener {
-            intent = Intent(this, Registro::class.java)
+            intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 Log.w(TAG, "signInWithEmail:failure", task.exception)
                 Toast.makeText(
                     baseContext,
-                    "Authentication failed- ${task.exception?.message}",
+                    "Authentication failed - ${task.exception?.message}",
                     Toast.LENGTH_SHORT,
                 ).show()
                 updateUI(null)
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             // Registration successful, you can redirect the user to the home screen or perform other actions
-            val intent = Intent(this, Home::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         } else {
             val intent = Intent(this, MainActivity::class.java)
@@ -91,7 +91,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun reload() {
     }
-
 
     companion object {
         private const val TAG = "EmailPassword"

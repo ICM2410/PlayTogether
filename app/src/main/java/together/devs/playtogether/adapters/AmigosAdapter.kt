@@ -1,4 +1,4 @@
-package together.devs.playtogether
+package together.devs.playtogether.adapters
 
 import android.content.Context
 import android.database.Cursor
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CursorAdapter
 import android.widget.TextView
+import together.devs.playtogether.R
 
 class ContactsAdapter(context: Context?, c: Cursor?, flags: Int) : CursorAdapter(context, c, flags) {
     private val CONTACT_ID_INDEX = 0

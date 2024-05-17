@@ -1,63 +1,70 @@
 package together.devs.playtogether
 
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import together.devs.playtogether.firebase.UserManager
+import together.devs.playtogether.model.User
 
-class Registro : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
-
-    private lateinit var auth: FirebaseAuth;
+    private lateinit var auth: FirebaseAuth
+    private lateinit var userManager: UserManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registro)
+        setContentView(R.layout.activity_register)
 
         val butReg: Button = findViewById(R.id.btnRegister)
         val log: TextView = findViewById(R.id.loginTvBTN)
 
         val emailEditText: EditText = findViewById(R.id.emailET)
-        val passwordEditText: EditText = findViewById(R.id.PasswordET)
+        val passwordEditText: EditText = findViewById(R.id.passwordET)
+        val userNameEditText: EditText = findViewById(R.id.nameET)
 
         auth = Firebase.auth
+        userManager = UserManager(Firebase.database)
 
         butReg.setOnClickListener {
-            val email = emailEditText.text.toString();
-            val password = passwordEditText.text.toString();
+            val email = emailEditText.text.toString()
+            val password = passwordEditText.text.toString()
+            val userName = userNameEditText.text.toString()
 
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                createAccount(email, password)
+            if (email.isNotEmpty() && password.isNotEmpty() && userName.isNotEmpty()) {
+                createAccount(email, password, userName)
             } else {
-                Toast.makeText(this, "Por favor revisa que todos los campos estén correctos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please ensure all fields are filled correctly", Toast.LENGTH_SHORT).show()
             }
         }
+
         log.setOnClickListener {
             intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
 
-    private fun createAccount(email: String, password: String) {
-        // [START create_user_with_email]
+    private fun createAccount(email: String, password: String, userName: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
+                    user?.let {
+                        val userObj = User(userName = userName, available = true)
+                        userManager.saveUser(it.uid, userObj)
+                    }
                     updateUI(user)
                 } else {
-                    // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
                     Toast.makeText(
                         baseContext,
@@ -67,16 +74,14 @@ class Registro : AppCompatActivity() {
                     updateUI(null)
                 }
             }
-        // [END create_user_with_email]
     }
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            // Registration successful, you can redirect the user to the home screen or perform other actions
-            val intent = Intent(this, MainActivity::class.java) //Main es Login
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         } else {
-            val intent = Intent(this, Registro::class.java) //Main es Login
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
     }

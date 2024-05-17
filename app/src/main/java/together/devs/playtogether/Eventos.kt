@@ -4,9 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
-import android.widget.Button
 import android.widget.ListView
 import org.json.JSONObject
+import together.devs.playtogether.adapters.EventosAdapter
+import together.devs.playtogether.info.EventInfo
 import java.io.IOException
 import java.io.InputStream
 
@@ -34,7 +35,7 @@ class Eventos : AppCompatActivity() {
         eventosListView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, _, position, _ ->
                 val eventoNombre = parent.getItemAtPosition(position) as String
-                val intent = Intent(this, InfoEvento::class.java)
+                val intent = Intent(this, EventInfo::class.java)
                 intent.putExtra("eventoElegido", eventoNombre)
                 startActivity(intent)
             }

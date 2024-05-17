@@ -1,68 +1,104 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/texto"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Dirección"
-            android:inputType="text"
-            android:imeOptions="actionSend"
-            android:background="@drawable/roundcorner" />
+            android:backgroundTint="@color/black"
+            android:hint="Address">
 
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/texto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/antic"
+                android:hint="Address"
+                android:imeOptions="actionSend"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/verPerfilButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/imagen_centro"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:gravity="center" />
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/antic"
+            android:gravity="center"
+            android:icon="@drawable/baseline_emoji_people_24"
+            android:text="Profile"
+
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinnerDeportes"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:entries="@array/deportes_array" />
+        android:layout_marginTop="16dp">
+
+        <Spinner
+            android:id="@+id/spinnerDeportes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/deportes_array"
+            android:spinnerMode="dropdown" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <org.osmdroid.views.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-    </org.osmdroid.views.MapView>
+        android:layout_weight="1"></org.osmdroid.views.MapView>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/verEventosButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_marginStart="32dp"
-            android:text="Ver Eventos" />
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/antic"
+            android:text="Events"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/verEquiposButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_width="0dp"
+
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="32dp"
-            android:text="Ver Equipos" />
-    </RelativeLayout>
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/antic"
+            android:text="Teams"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 </LinearLayout>

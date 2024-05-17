@@ -1,16 +1,17 @@
-package together.devs.playtogether
+package together.devs.playtogether.info
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import org.json.JSONObject
+import together.devs.playtogether.R
 import java.io.InputStream
 
-class InfoEquipo : AppCompatActivity() {
+class EventInfo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_info_equipo)
-        val json = loadJSONFromAsset("equipos.json")
+        setContentView(R.layout.activity_info_evento)
+        val json = loadJSONFromAsset("eventos.json")
         InfoPais(json)
     }
     fun loadJSONFromAsset(fileName: String): String {
@@ -22,24 +23,24 @@ class InfoEquipo : AppCompatActivity() {
     }
     fun InfoPais(jsonString: String) {
 
-        val pais = intent.getStringExtra("equipoElegido")
+        val pais = intent.getStringExtra("eventoElegido")
         val jsonObject = JSONObject(jsonString)
-        val jsonArray = jsonObject.getJSONArray("equipos")
+        val jsonArray = jsonObject.getJSONArray("eventos")
 
-        val textViewName: TextView = findViewById(R.id.nombre2)
-        val textViewInt: TextView = findViewById(R.id.nombreInter2)
-        val textViewSigla: TextView = findViewById(R.id.siglas2)
-        val textViewCapital: TextView = findViewById(R.id.capital2)
+        val textViewName: TextView = findViewById(R.id.nombre1)
+        val textViewInt: TextView = findViewById(R.id.nombreInter1)
+        val textViewSigla: TextView = findViewById(R.id.siglas1)
+        val textViewCapital: TextView = findViewById(R.id.capital1)
 
         val countryDataMap = mutableMapOf<String, List<String>>()
 
         for (i in 0 until jsonArray.length()) {
 
             val jsonObject: JSONObject = jsonArray.getJSONObject(i)
-            val countryName = jsonObject.getString("nombre_equipo")
-            val internName = jsonObject.getString("miembros")
-            val sigla = jsonObject.getString("capitan")
-            val capital = jsonObject.getString("deporte")
+            val countryName = jsonObject.getString("nombre_evento")
+            val internName = jsonObject.getString("fecha")
+            val sigla = jsonObject.getString("organizador")
+            val capital = jsonObject.getString("hora")
             countryDataMap[countryName] = listOf(internName, sigla, capital)
         }
 
@@ -51,10 +52,10 @@ class InfoEquipo : AppCompatActivity() {
             val sigla = tail[1]
             val capital = tail[2]
 
-            textViewName.text = "Nombre del equipo: $pais"
-            textViewInt.text = "No miembros: $internName"
-            textViewSigla.text = "Capitan: $sigla"
-            textViewCapital.text = "Deporte: $capital"
+            textViewName.text = "El nombre evento: $pais"
+            textViewInt.text = "Fecha: $internName"
+            textViewSigla.text = "Organizador: $sigla"
+            textViewCapital.text = "Hora:$capital"
         }
     }
 }

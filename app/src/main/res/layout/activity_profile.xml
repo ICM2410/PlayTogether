@@ -1,0 +1,171 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/cardBackground">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:id="@+id/profile_bar"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="10dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/userProfileImageView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@android:color/darker_gray"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baseline_person_24"
+                    app:shapeAppearanceOverlay="@style/ImageStyle_Circle"
+                    android:contentDescription="@string/profile_image" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/userNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_bar"
+                android:text="User Name"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/antic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/userEmailTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userNameTextView"
+                android:text="email@example.com"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                android:fontFamily="@font/antic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/historyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userEmailTextView"
+                android:text="booking and activity history"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/antic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/editProfileButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/historyTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:text="Edit Profile"
+                android:textAllCaps="false"
+                android:backgroundTint="#0d74e7"
+                android:textColor="@android:color/white"
+                app:cornerRadius="16dp"
+                app:elevation="8dp"
+                android:fontFamily="@font/antic"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/friendsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editProfileButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:text="Friends List"
+                android:textAllCaps="false"
+                android:backgroundTint="#0d74e7"
+                android:textColor="@android:color/white"
+                app:cornerRadius="16dp"
+                app:elevation="8dp"
+                android:fontFamily="@font/antic"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/createEventButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/friendsButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:text="Create Event"
+                android:textAllCaps="false"
+                android:backgroundTint="#0d74e7"
+                android:textColor="@android:color/white"
+                app:cornerRadius="16dp"
+                app:elevation="8dp"
+                android:fontFamily="@font/antic"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addCourtButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/createEventButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:text="Add Court"
+                android:textAllCaps="false"
+                android:backgroundTint="#0d74e7"
+                android:textColor="@android:color/white"
+                app:cornerRadius="16dp"
+                app:elevation="8dp"
+                android:fontFamily="@font/antic"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/createTeamButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/addCourtButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:text="Create Team"
+                android:textAllCaps="false"
+                android:backgroundTint="#0d74e7"
+                android:textColor="@android:color/white"
+                app:cornerRadius="16dp"
+                app:elevation="8dp"
+                android:fontFamily="@font/antic"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/viewHistoryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/createTeamButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:text="View History"
+                android:textAllCaps="false"
+                android:backgroundTint="#0d74e7"
+                android:textColor="@android:color/white"
+                app:cornerRadius="16dp"
+                app:elevation="8dp"
+                android:fontFamily="@font/antic"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
